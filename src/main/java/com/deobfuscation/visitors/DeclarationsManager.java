@@ -22,7 +22,7 @@ public class DeclarationsManager extends ASTVisitor{
 	@Override
 	public boolean visit(SimpleName node) {
 		if(isValidDeclaration(node)){
-			System.out.println("Declaration: " + node.getIdentifier() + " : " + node.resolveBinding().getKey());
+			System.out.println("Declaration: " + node.getIdentifier());
 			IBinding binding = node.resolveBinding();
 			IdentifierNameManager manager = new IdentifierNameManager(node);
 			node.setIdentifier(manager.getSimpleName());
@@ -62,7 +62,6 @@ public class DeclarationsManager extends ASTVisitor{
 		if(binding instanceof IMethodBinding){
 			result = Utils.isOverriddenMethod((IMethodBinding)binding);
 		}
-		System.out.println(node.getIdentifier() + " Result: " + result);
 		return result;
 	}
 

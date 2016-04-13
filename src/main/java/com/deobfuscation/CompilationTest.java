@@ -18,9 +18,9 @@ import com.deobfuscation.visitors.ReferencesVisitor;
 public class CompilationTest {
 
 	public static void main(String args[]) throws IOException, CoreException, ConfigurationException {
-		String configPath = "f:/cns/config.properties";
+		//String configPath = "f:/cns/config.properties";
 		
-		ConfigurationManager manager = ConfigurationManager.getConfigurationManager(configPath);
+		ConfigurationManager manager = ConfigurationManager.getConfigurationManager(args[0]);
 		File rootDirectory = new File(manager.getInputFolder());
 		
 		List<CompilationUnitBean> compilationUnitBeans = new ArrayList<>();

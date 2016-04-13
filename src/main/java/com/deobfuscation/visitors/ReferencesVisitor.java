@@ -33,9 +33,9 @@ public class ReferencesVisitor extends ASTVisitor {
 		return super.visit(node);
 	}
 
-	private boolean isValidTypeReference(Map<String, IdentifierNameManager> declarations, SimpleName node) {
+	/*private boolean isValidTypeReference(Map<String, IdentifierNameManager> declarations, SimpleName node) {
 		return isValidReference(declarations,node) && node.resolveBinding().getKind() == IBinding.TYPE;
-	}
+	}*/
 	
 	private boolean isValidReference(Map<String, IdentifierNameManager> declarations, SimpleName node) {
 		return !node.isDeclaration() && node.resolveBinding() !=null 
