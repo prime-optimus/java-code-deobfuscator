@@ -15,9 +15,7 @@ import com.deobfuscation.config.ConfigurationManager;
 import com.deobfuscation.utils.Utils;
 
 public class DeclarationsManager extends ASTVisitor{
-	
 	private Map<String, IdentifierNameManager> declarations = new HashMap<>();
-	//private Map<String, List<IdentifierNameManager>> constructorDeclarations = new HashMap<>();
 
 	@Override
 	public boolean visit(SimpleName node) {
@@ -27,20 +25,6 @@ public class DeclarationsManager extends ASTVisitor{
 			IdentifierNameManager manager = new IdentifierNameManager(node);
 			node.setIdentifier(manager.getSimpleName());
 			declarations.put(binding.getKey(), manager);
-			
-			/*if(isConstructor(node)){
-				ITypeBinding typeBinding = node.resolveTypeBinding();
-				
-				if(constructorDeclarations.containsKey(typeBinding.getKey())){
-					List<IdentifierNameManager> list = constructorDeclarations.get(typeBinding.getKey());
-					list.add(manager);
-				} else {
-					List<IdentifierNameManager> list = new ArrayList<>();
-					list.add(manager);
-					constructorDeclarations.put(typeBinding.getKey(), list);
-				}
-				System.out.println("Constructor: " + binding.getKey());
-			}*/
 		}
 		return super.visit(node);
 	}

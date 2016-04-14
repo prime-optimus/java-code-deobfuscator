@@ -18,12 +18,6 @@ public class ReferencesVisitor extends ASTVisitor {
 	public boolean visit(SimpleName node) {
 		Map<String, IdentifierNameManager> declarations = declarationsManager.getDeclarations();
 		
-		/*if(isValidTypeReference(declarations, node)){
-			ITypeBinding binding = node.resolveTypeBinding();
-			String simpleName = declarations.get(binding.getKey()).getSimpleName();
-			node.setIdentifier(simpleName);
-			System.out.println("Updated: " + simpleName + " : " + binding.getName());
-		} else*/ 
 		if(isValidReference(declarations, node)){
 			IBinding binding = node.resolveBinding();
 			String simpleName = declarations.get(binding.getKey()).getSimpleName();
@@ -33,10 +27,6 @@ public class ReferencesVisitor extends ASTVisitor {
 		return super.visit(node);
 	}
 
-	/*private boolean isValidTypeReference(Map<String, IdentifierNameManager> declarations, SimpleName node) {
-		return isValidReference(declarations,node) && node.resolveBinding().getKind() == IBinding.TYPE;
-	}*/
-	
 	private boolean isValidReference(Map<String, IdentifierNameManager> declarations, SimpleName node) {
 		return !node.isDeclaration() && node.resolveBinding() !=null 
 				&& node.resolveBinding().getKey() != null
