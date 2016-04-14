@@ -30,6 +30,10 @@ public class ConfigurationManager {
 		return propertiesConfiguration.getString("name.type");
 	}
 	
+	public String getFinalIdentifierPattern(){
+		return propertiesConfiguration.getString("name.variable.final");
+	}
+	
 	public String getGlobalVariablePrefix(){
 		return propertiesConfiguration.getString("prefix.variable.global");
 	}

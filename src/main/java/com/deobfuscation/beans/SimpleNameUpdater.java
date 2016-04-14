@@ -61,13 +61,16 @@ public class SimpleNameUpdater {
 	}
 
 	private static String getUpdatedVariableName(IBinding binding) {
-		Map<String, String> valueMap = getIntialValueMap(binding);
+		ConfigurationManager manager = ConfigurationManager.getConfigurationManager();
 		
+		Map<String, String> valueMap = getIntialValueMap(binding);
 		IVariableBinding variableBinding = (IVariableBinding) binding;
 		valueMap.put("prefix", getVariablePrefix(variableBinding));
 		valueMap.put("type", sanitizeTypeName(variableBinding.getType().getName()));
 		
-		ConfigurationManager manager = ConfigurationManager.getConfigurationManager();
+		if(variableBinding.isEffectivelyFinal()){
+			valueMap.put("final", manager.getFinalIdentifierPattern());
+		}
 		return updateSimpleName(valueMap, manager.getVariableNamePattern());
 	}
 
@@ -101,6 +104,7 @@ public class SimpleNameUpdater {
 		valueMap.put("name", binding.getName());
 		valueMap.put("prefix", "");
 		valueMap.put("type", "");
+		valueMap.put("final", "");
 		return valueMap;
 	}
 }
