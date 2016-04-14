@@ -15,7 +15,7 @@ import com.deobfuscation.config.ConfigurationManager;
 import com.deobfuscation.visitors.DeclarationsManager;
 import com.deobfuscation.visitors.ReferencesVisitor;
 
-public class CompilationTest {
+public class DeobfuscationDriver {
 
 	public static void main(String args[]) throws IOException, CoreException, ConfigurationException {
 		//String configPath = "f:/cns/config.properties";
