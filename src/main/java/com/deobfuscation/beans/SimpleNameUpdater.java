@@ -91,7 +91,13 @@ public class SimpleNameUpdater {
 	}
 	
 	private static String sanitizeTypeName(String name) {
-		return name.replace("[]", "Array");
+		char[] charArray = name.toCharArray();
+		for(int i=0; i<charArray.length; i++){
+			if(!Character.isAlphabetic(charArray[i])){
+				charArray[i] = '_';
+			}
+		}
+		return String.valueOf(charArray);
 	}
 	
 	private static String updateSimpleName(Map<String, String> valueMap, String pattern) {
