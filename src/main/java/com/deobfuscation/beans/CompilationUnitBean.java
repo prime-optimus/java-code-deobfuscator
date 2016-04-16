@@ -40,7 +40,8 @@ public class CompilationUnitBean {
 			
 			if(!StringUtils.equals(newName, javaFile.getName())){
 				File file = new File(javaFile.getParent() + "/" + newName);
-				FileUtils.moveFile(javaFile, file);
+				FileUtils.copyFile(javaFile, file);
+				//FileUtils.moveFile(javaFile, file);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
