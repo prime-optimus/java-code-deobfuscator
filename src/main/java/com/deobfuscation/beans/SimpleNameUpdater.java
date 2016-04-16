@@ -1,5 +1,6 @@
 package com.deobfuscation.beans;
 
+import java.lang.reflect.Modifier;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -68,7 +69,7 @@ public class SimpleNameUpdater {
 		valueMap.put("prefix", getVariablePrefix(variableBinding));
 		valueMap.put("type", sanitizeTypeName(variableBinding.getType().getName()));
 		
-		if(variableBinding.isEffectivelyFinal()){
+		if(variableBinding.isEffectivelyFinal() || Modifier.isFinal(variableBinding.getModifiers())){
 			valueMap.put("final", manager.getFinalIdentifierPattern());
 		}
 		return updateSimpleName(valueMap, manager.getVariableNamePattern());
