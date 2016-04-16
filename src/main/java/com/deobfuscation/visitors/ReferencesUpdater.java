@@ -8,10 +8,10 @@ import org.eclipse.jdt.core.dom.SimpleName;
 
 import com.deobfuscation.beans.IdentifierNameManager;
 
-public class ReferencesVisitor extends ASTVisitor {
+public class ReferencesUpdater extends ASTVisitor {
 	private DeclarationsManager declarationsManager;
 
-	public ReferencesVisitor(DeclarationsManager declarationsManager) {
+	public ReferencesUpdater(DeclarationsManager declarationsManager) {
 		this.declarationsManager = declarationsManager;
 	}
 

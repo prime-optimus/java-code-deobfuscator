@@ -13,7 +13,7 @@ import org.eclipse.core.runtime.CoreException;
 import com.deobfuscation.beans.CompilationUnitBean;
 import com.deobfuscation.config.ConfigurationManager;
 import com.deobfuscation.visitors.DeclarationsManager;
-import com.deobfuscation.visitors.ReferencesVisitor;
+import com.deobfuscation.visitors.ReferencesUpdater;
 
 public class DeobfuscationDriver {
 
@@ -32,7 +32,7 @@ public class DeobfuscationDriver {
 			compilationUnitBean.accept(declarationsManager);
 		}
 		
-		ReferencesVisitor invokationManager = new ReferencesVisitor(declarationsManager);
+		ReferencesUpdater invokationManager = new ReferencesUpdater(declarationsManager);
 		for (CompilationUnitBean compilationUnitBean : compilationUnitBeans) {
 			System.out.println("Updating " + compilationUnitBean);
 			compilationUnitBean.accept(invokationManager);
