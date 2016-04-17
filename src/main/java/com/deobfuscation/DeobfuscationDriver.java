@@ -32,10 +32,10 @@ public class DeobfuscationDriver {
 			compilationUnitBean.accept(declarationsManager);
 		}
 		
-		ReferencesUpdater invokationManager = new ReferencesUpdater(declarationsManager);
+		ReferencesUpdater referencesUpdater = new ReferencesUpdater(declarationsManager);
 		for (CompilationUnitBean compilationUnitBean : compilationUnitBeans) {
-			System.out.println("Updating " + compilationUnitBean);
-			compilationUnitBean.accept(invokationManager);
+			System.out.println("Updating: " + compilationUnitBean);
+			compilationUnitBean.accept(referencesUpdater);
 		}
 		
 		for (CompilationUnitBean compilationUnitBean : compilationUnitBeans) {
